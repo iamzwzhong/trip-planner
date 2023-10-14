@@ -1,29 +1,21 @@
 # trip-planner
 
-https://theta360developers.github.io/theta-client-guide/how-to-install-nodejs/
+### Install Visual Studio Code & Extensions
+You can install Visual Studio Code [here](https://code.visualstudio.com/download).
+Here are the required extensions for this project:
+* Svelte for VS Code
+* Prettier - Code formatter
+* ESLint
 
-VSCode
-Svelte for VS Code
-Prettier
-Eslint
+### Installing Node on Windows
+1. First, install NVM (node version manager) for Windows. This will allow us to manage and use different node versions. Download and install nvm-setup.exe [here](https://github.com/coreybutler/nvm-windows/releases/tag/1.1.11).
+2. Check if you have installed NVM successfully by using the command `nvm --version`.
+3. Install node by using the command `nvm install 18.18.1`
+4. `nvm list` will list which versions of node are installed.
+5. `nvm use 18.18.1` will allow you to use that node version.
+6. Verify that node is working by running `node --version`
 
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
+### Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -34,7 +26,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building
 
 To create a production version of your app:
 
