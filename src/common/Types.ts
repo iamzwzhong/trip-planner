@@ -1,0 +1,25 @@
+export interface User {
+	id: string;
+	username: string;
+	avatar: string;
+}
+
+export interface Event {
+	id: string;
+	eventName: string;
+	address: string;
+	description: string;
+	photo: string;
+	startTime: Date;
+	endTime: Date;
+	eventTag: EventTag;
+}
+
+export enum EventTag {
+	Anime = 'Anime',
+	Nature = 'Nature',
+	Attractions = 'Attractions',
+	ReligiousArchitecture = 'Religious Architecture',
+	Food = 'Food',
+	Shopping = 'Shopping'
+}
