@@ -2,7 +2,6 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
-	import { Alert } from 'flowbite-svelte';
 </script>
 
 <svelte:head>
@@ -21,14 +20,9 @@
 
 		to your new<br />SvelteKit app
 	</h1>
-
 	<h2>
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
-	<Alert>
-		<span class="font-medium">Info alert!</span>
-		Change a few things up and try submitting again.
-	</Alert>
 
 	<Counter />
 </section>
