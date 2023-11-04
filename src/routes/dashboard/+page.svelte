@@ -53,7 +53,7 @@
 <main>
 	<section>
 		<div
-			class="w-full m-auto p-5 flex flex-col gap-5 text-center lg:flex-row lg:flex-wrap items-center lg:justify-around xl:justify-evenly xl:max-w-screen-3xl"
+			class="w-full m-auto p-5 flex flex-col gap-5 text-center items-center lg:flex-row lg:flex-wrap lg:justify-around xl:justify-evenly xl:max-w-screen-3xl"
 		>
 			<div
 				class="flex flex-col items-center w-full gap-2 lg:w-7/12 lg:flex-row lg:justify-center lg:items-start"
@@ -148,7 +148,7 @@
 			<div
 				class="w-full m-auto flex flex-col p-5 gap-5 text-center items-center justify-center lg:flex-row xl:max-w-screen-xl 2xl:items-start"
 			>
-				<div class="lg:w-1/2 items-center flex-col flex">
+				<div class="items-center flex-col flex lg:w-1/2">
 					<Heading tag="h2" class="pb-6">Upcoming Events</Heading>
 					<Timeline order="vertical">
 						{#each myEventsData as event}
@@ -194,7 +194,7 @@
 						{/each}
 					</Timeline>
 				</div>
-				<div class="lg:w-1/2 self-stretch justify-around flex-col flex">
+				<div class="self-stretch justify-around flex-col flex lg:w-1/2">
 					<div class="flex flex-col gap-5 text-center items-center">
 						<Heading tag="h2" class="pb-6">Travel Friends</Heading>
 						<div
