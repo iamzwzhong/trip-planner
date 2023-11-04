@@ -53,10 +53,10 @@
 <main>
 	<section>
 		<div
-			class="w-full m-auto p-5 flex flex-col gap-5 text-center items-center lg:flex-row lg:flex-wrap lg:justify-around xl:justify-evenly xl:max-w-screen-3xl"
+			class="xl:max-w-screen-3xl m-auto flex w-full flex-col items-center gap-5 p-5 text-center lg:flex-row lg:flex-wrap lg:justify-around xl:justify-evenly"
 		>
 			<div
-				class="flex flex-col items-center w-full gap-2 lg:w-7/12 lg:flex-row lg:justify-center lg:items-start"
+				class="flex w-full flex-col items-center gap-2 lg:w-7/12 lg:flex-row lg:items-start lg:justify-center"
 			>
 				<Avatar src={data.users[0].avatar} class="h-300 w-300 max-w-sm lg:h-52 lg:w-52" />
 				<Heading tag="h2" class="w-max text-center tracking-tighter"
@@ -67,21 +67,21 @@
 				class="flex flex-col items-center gap-3 sm:max-w-3xl lg:order-2 lg:max-w-4xl 2xl:max-w-xl 2xl:items-start"
 			>
 				<Heading tag="h3" class="w-max tracking-tight">My Trip Dashboard</Heading>
-				<p class="text-lg text-gray-500 dark:text-gray-400 text-justify">
+				<p class="text-justify text-lg text-gray-500 dark:text-gray-400">
 					Welcome to your personal dashboard page. Here, you'll be able to access a summary view of
 					your trip. View everything that you would need to know about your trip at a quick glance
 					here.
 				</p>
-				<p class="text-lg text-gray-500 dark:text-gray-400 text-justify">
+				<p class="text-justify text-lg text-gray-500 dark:text-gray-400">
 					Get started by selecting a trip in the top-right section of the dashboard. You must join a
 					trip before you will be able to see any in the dropdown.
 				</p>
 				<ul
-					class="list-none list-inside space-y-4 text-left self-stretch font-medium text-gray-900 dark:text-white border-y dark:border-gray-700 py-8 lg:order-2"
+					class="list-inside list-none space-y-4 self-stretch border-y py-8 text-left font-medium text-gray-900 dark:border-gray-700 dark:text-white lg:order-2"
 				>
 					<li class="flex items-center gap-2">
 						<svg
-							class="w-5 h-5 p-1 rounded-full bg-primary-100 dark:bg-gray-700 text-primary-700"
+							class="h-5 w-5 rounded-full bg-primary-100 p-1 text-primary-700 dark:bg-gray-700"
 							width="14"
 							height="10"
 							viewBox="0 0 14 10"
@@ -96,7 +96,7 @@
 					</li>
 					<li class="flex items-center gap-2">
 						<svg
-							class="w-5 h-5 p-1 rounded-full bg-primary-100 dark:bg-gray-700 text-primary-700"
+							class="h-5 w-5 rounded-full bg-primary-100 p-1 text-primary-700 dark:bg-gray-700"
 							width="14"
 							height="10"
 							viewBox="0 0 14 10"
@@ -111,7 +111,7 @@
 					</li>
 					<li class="flex items-center gap-2">
 						<svg
-							class="w-5 h-5 p-1 rounded-full bg-primary-100 dark:bg-gray-700 text-primary-700"
+							class="h-5 w-5 rounded-full bg-primary-100 p-1 text-primary-700 dark:bg-gray-700"
 							width="14"
 							height="10"
 							viewBox="0 0 14 10"
@@ -129,9 +129,9 @@
 			<img
 				src={selected ? selected.photo : example_dashboard_img}
 				alt={selected ? selected.tripName : 'Example Dashboard Image'}
-				class="rounded-md bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 w-full sm:w-auto sm:h-96 lg:order-2 dashboard-image"
+				class="dashboard-image w-full rounded-md bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-96 sm:w-auto lg:order-2"
 			/>
-			<div class="flex flex-col max-w-xs mx-auto gap-6 lg:order-1">
+			<div class="mx-auto flex max-w-xs flex-col gap-6 lg:order-1">
 				{#if selected}
 					<Heading tag="h3" class="tracking-tighter"
 						>{daysBetween(today, selected.startDate)} days until this trip</Heading
@@ -146,30 +146,30 @@
 	{#if selected}
 		<section>
 			<div
-				class="w-full m-auto flex flex-col p-5 gap-5 text-center items-center justify-center lg:flex-row xl:max-w-screen-xl 2xl:items-start"
+				class="m-auto flex w-full flex-col items-center justify-center gap-5 p-5 text-center lg:flex-row xl:max-w-screen-xl 2xl:items-start"
 			>
-				<div class="items-center flex-col flex lg:w-1/2">
+				<div class="flex flex-col items-center lg:w-1/2">
 					<Heading tag="h2" class="pb-6">Upcoming Events</Heading>
 					<Timeline order="vertical">
 						{#each myEventsData as event}
 							<TimelineItem>
 								<svelte:fragment slot="icon">
 									<span
-										class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-primary-200 rounded-full ring-8 ring-white dark:ring-gray-800 dark:bg-gray-700"
+										class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-200 ring-8 ring-white dark:bg-gray-700 dark:ring-gray-800"
 									/>
 								</svelte:fragment>
 								<div
-									class="flex flex-col items-center gap-2 max-w-xl lg:flex-row lg:items-start lg:gap-4 2xl:max-w-7xl"
+									class="flex max-w-xl flex-col items-center gap-2 lg:flex-row lg:items-start lg:gap-4 2xl:max-w-7xl"
 								>
 									<div class="flex flex-col items-center lg:items-start">
 										<img
 											src={event.photo}
 											alt={event.eventName + ' photo'}
-											class="rounded-3xl object-cover h-60 w-full mb-2 lg:mb-6 lg:h-80 upcoming-events-image"
+											class="upcoming-events-image mb-2 h-60 w-full rounded-3xl object-cover lg:mb-6 lg:h-80"
 										/>
 										<Heading
 											tag="h3"
-											class="rounded-full text-xl font-bold text-white bg-red-500 py-1 px-2 w-fit"
+											class="w-fit rounded-full bg-red-500 px-2 py-1 text-xl font-bold text-white"
 											>{event.eventTag}</Heading
 										>
 									</div>
@@ -185,7 +185,7 @@
 												' - ' +
 												new Date(event.endTime).toLocaleTimeString()}
 										</h6>
-										<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight max-w-sm">
+										<p class="max-w-sm font-normal leading-tight text-gray-700 dark:text-gray-400">
 											{event.description}
 										</p>
 									</div>
@@ -194,31 +194,31 @@
 						{/each}
 					</Timeline>
 				</div>
-				<div class="self-stretch justify-around flex-col flex lg:w-1/2">
-					<div class="flex flex-col gap-5 text-center items-center">
+				<div class="flex flex-col justify-around self-stretch lg:w-1/2">
+					<div class="flex flex-col items-center gap-5 text-center">
 						<Heading tag="h2" class="pb-6">Travel Friends</Heading>
 						<div
-							class="flex flex-col overflow-y-scroll travel-friends-scrollbar max-h-72"
+							class="travel-friends-scrollbar flex max-h-72 flex-col overflow-y-scroll"
 							dir="rtl"
 						>
 							{#each data.users as { avatar, username }}
-								<div class="flex mr-auto gap-5 mb-3 ml-5">
+								<div class="mb-3 ml-5 mr-auto flex gap-5">
 									<h4
-										class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white my-auto"
+										class="my-auto text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
 									>
 										{username}
 									</h4>
 									<img
 										src={avatar}
 										alt={username + ' avatar'}
-										class="rounded-full bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 w-8 h-8 sm:w-12 sm:h-12"
+										class="h-8 w-8 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12"
 									/>
 								</div>
 							{/each}
 						</div>
 					</div>
 					<div
-						class="w-full max-w-sm m-auto p-5 flex flex-col gap-5 text-center items-center sm:max-w-lg"
+						class="m-auto flex w-full max-w-sm flex-col items-center gap-5 p-5 text-center sm:max-w-lg"
 					>
 						<Heading tag="h2">Other Events</Heading>
 						<div class="max-w-xl space-y-4">
@@ -227,7 +227,7 @@
 								<Controls />
 							</Carousel>
 							<Thumbnails
-								class="bg-transparent gap-3"
+								class="gap-3 bg-transparent"
 								let:Thumbnail
 								let:image
 								let:selected
@@ -237,14 +237,14 @@
 								<Thumbnail
 									{...image}
 									{selected}
-									class="rounded-md shadow-xl hover:outline hover:outline-primary-500 h-20"
+									class="h-20 rounded-md shadow-xl hover:outline hover:outline-primary-500"
 									activeClass="outline outline-primary-400"
 								/>
 							</Thumbnails>
 							<div class="flex flex-col items-center text-center">
 								<Heading
 									tag="h3"
-									class="rounded-full text-xl font-bold text-white bg-red-500 py-1 px-2"
+									class="rounded-full bg-red-500 px-2 py-1 text-xl font-bold text-white"
 									style="width: fit-content">{data.events[0].eventTag}</Heading
 								>
 								<Heading tag="h4" class="tracking-tight">
@@ -259,7 +259,7 @@
 										new Date(data.events[0].endTime).toLocaleTimeString()}
 								</Heading>
 							</div>
-							<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
+							<p class="font-normal leading-tight text-gray-700 dark:text-gray-400">
 								{images[index].alt}
 							</p>
 						</div>

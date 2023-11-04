@@ -5,7 +5,6 @@
 		NavBrand,
 		NavLi,
 		NavUl,
-		Button,
 		Input,
 		Avatar,
 		NavHamburger,
@@ -17,7 +16,7 @@
 	import { SearchOutline } from 'flowbite-svelte-icons';
 </script>
 
-<div class="sticky top-0 z-40 flex-none mx-auto w-full bg-white dark:bg-gray-900">
+<div class="sticky top-0 z-40 mx-auto w-full flex-none bg-white dark:bg-gray-900">
 	<Navbar rounded color="form">
 		<NavBrand href="/">
 			<img src={logo} class="mx-3 h-6 sm:h-9" alt="Trip Planner Logo" />
@@ -30,15 +29,15 @@
 			<NavLi href="/dashboard">Dashboard</NavLi>
 			<NavLi href="/sverdle">Sverdle</NavLi>
 		</NavUl>
-		<div class="flex ml-auto">
-			<div class="hidden relative md:block">
-				<div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-					<SearchOutline class="w-4 h-4" />
+		<div class="ml-auto flex">
+			<div class="relative hidden md:block">
+				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+					<SearchOutline class="h-4 w-4" />
 				</div>
 				<Input id="search-navbar" class="pl-10" placeholder="Search..." />
 			</div>
 			<DarkMode class="ml-2" />
-			<div class="flex items-center md:order-2 ml-2">
+			<div class="ml-2 flex items-center md:order-2">
 				<Avatar id="avatar-menu" src="https://api.dicebear.com/7.x/thumbs/svg?seed=mock" />
 				<NavHamburger class1="w-full md:flex md:w-auto md:order-1" />
 			</div>

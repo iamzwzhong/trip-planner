@@ -4,7 +4,7 @@
 	import './styles.css';
 </script>
 
-<div class="bg-white dark:bg-gray-800 h-screen">
+<div class="h-screen bg-white dark:bg-gray-800">
 	<Header />
 	<main class="grow bg-white dark:bg-gray-800">
 		<slot />

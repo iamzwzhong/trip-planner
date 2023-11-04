@@ -45,6 +45,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"prettier-plugin-tailwindcss": "^0.4.1",
 		"svelte-legos": "^0.2.2"
 	}
 }
