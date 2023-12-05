@@ -7,7 +7,7 @@ function createRandomUser(): User {
 	return {
 		id: faker.string.uuid(),
 		avatar: `https://api.dicebear.com/7.x/thumbs/svg?seed=${username}`,
-		username: username
+		username: username.slice(0, 16)
 	};
 }
 
