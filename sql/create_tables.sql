@@ -7,34 +7,33 @@ DROP TABLE IF EXISTS EVENTS;
 DROP TABLE IF EXISTS TRIPS;
 DROP TYPE IF EXISTS EventTag;
 DROP EXTENSION IF EXISTS "uuid-ossp";
-
 -- Database Table Creation
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TYPE EventTag AS ENUM('Anime', 'Nature', 'Attractions', 'Religious Architecture', 'Food', 'Shopping');
 
 CREATE TABLE USERS(
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    username VARCHAR(16),
-    avatar VARCHAR(100)
+    username VARCHAR(16) NOT NULL,
+    avatar VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE EVENTS(
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    event_name VARCHAR(50),
-    address VARCHAR(255),
-    description VARCHAR(500),
-    photo VARCHAR(100),
-    start_time TIMESTAMP,
-    end_time TIMESTAMP,
-    event_tag EventTag
+    event_name VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    photo VARCHAR(100) NOT NULL,
+    start_time TIMESTAMP NOT NULL,
+    end_time TIMESTAMP NOT NULL,
+    event_tag EventTag NOT NULL
 );
 
 CREATE TABLE TRIPS(
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    trip_name VARCHAR(50),
-    start_date DATE,
-    end_date DATE,
-    photo VARCHAR(100)
+    trip_name VARCHAR(50) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    photo VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE USER_EVENTS(
