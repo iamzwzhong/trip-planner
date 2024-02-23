@@ -33,7 +33,8 @@ export async function POST(requestEvent: RequestEvent) {
 	const startTime = eventStartTime;
 	const endTime = eventEndTime;
 	const eventTag = faker.helpers.enumValue(EventTag);
-	await db.sql`INSERT INTO events (event_name, address, description, photo, start_time, end_time, event_tag) VALUES (${eventName}, ${address}, ${description}, ${photo}, ${startTime.toISOString()}, ${endTime.toISOString()}, ${eventTag});`;
+	await db.sql`INSERT INTO events (event_name, address, description, photo, start_time, end_time, event_tag) 
+		VALUES (${eventName}, ${address}, ${description}, ${photo}, ${startTime.toISOString()}, ${endTime.toISOString()}, ${eventTag});`;
 	return new Response(null, { status: 201 });
 }
 

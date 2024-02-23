@@ -1,3 +1,6 @@
+-- To run the file, use the psql command to enter the database. 
+-- After use \i "FILE_PATH_HERE" with forward slashes.
+
 -- Resetting the database
 DROP TABLE IF EXISTS USER_EVENTS;
 DROP TABLE IF EXISTS TRIP_EVENTS;
