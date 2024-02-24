@@ -146,7 +146,7 @@
 	{#if selected}
 		<section>
 			<div
-				class="m-auto flex w-full flex-col items-center justify-center gap-5 p-5 text-center lg:flex-row xl:max-w-screen-xl 2xl:items-start"
+				class="m-auto flex w-full flex-col items-start justify-center gap-5 p-5 text-center lg:flex-row xl:max-w-screen-xl 2xl:items-start"
 			>
 				<div class="flex flex-col items-center lg:w-1/2">
 					<Heading tag="h2" class="pb-6">Upcoming Events</Heading>
@@ -194,7 +194,7 @@
 						{/each}
 					</Timeline>
 				</div>
-				<div class="flex flex-col justify-around self-stretch lg:w-1/2">
+				<div class="flex flex-col justify-start lg:w-1/2">
 					<div class="flex flex-col items-center gap-5 text-center">
 						<Heading tag="h2" class="pb-6">Travel Friends</Heading>
 						<div

@@ -1,19 +1,29 @@
 # trip-planner
 
 ### Install Visual Studio Code & Extensions
+
 You can install Visual Studio Code [here](https://code.visualstudio.com/download).
 Here are the required extensions for this project:
-* Svelte for VS Code
-* Prettier - Code formatter
-* ESLint
+
+- Svelte for VS Code
+- Prettier - Code formatter
+- ESLint
 
 ### Installing Node on Windows
+
 1. First, install NVM (node version manager) for Windows. This will allow us to manage and use different node versions. Download and install nvm-setup.exe [here](https://github.com/coreybutler/nvm-windows/releases/tag/1.1.11).
 2. Check if you have installed NVM successfully by using the command `nvm --version`.
 3. Install node by using the command `nvm install 18.18.1`
 4. `nvm list` will list which versions of node are installed.
 5. `nvm use 18.18.1` will allow you to use that node version.
 6. Verify that node is working by running `node --version`
+
+### Connecting to Database
+
+1. Ensure project is updated using latest main branch and `npm install`
+2. Install Vercel using `npm i -g vercel@latest`
+3. Enable running scripts with `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
+4. Pull Vercel local environment variables using `vercel env pull .env.development.local`
 
 ### Developing
 
