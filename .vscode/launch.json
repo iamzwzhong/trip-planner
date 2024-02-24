@@ -1,20 +1,20 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Run NPM Dev",
-        "type": "node",
-        "request": "launch",
-        "runtimeExecutable": "npm",
-        "args": ["run", "dev", "--", "--open"],
-        "stopOnEntry": false,
-        "cwd": "${workspaceFolder}",
-        
-        // Can set environment variables as needed
-        "env": {
-          "NODE_ENV": "development"
-        },
-        "console": "integratedTerminal"
-      }
-    ]
-  }
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Run NPM Dev",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npm",
+			"args": ["run", "dev", "--", "--open"],
+			"stopOnEntry": false,
+			"cwd": "${workspaceFolder}",
+
+			// Can set environment variables as needed
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"console": "integratedTerminal"
+		}
+	]
+}

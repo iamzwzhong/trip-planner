@@ -245,22 +245,22 @@
 								<Heading
 									tag="h3"
 									class="rounded-full bg-red-500 px-2 py-1 text-xl font-bold text-white"
-									style="width: fit-content">{data.events[0].eventTag}</Heading
+									style="width: fit-content">{otherEventsData[index].eventTag}</Heading
 								>
 								<Heading tag="h4" class="tracking-tight">
-									{data.events[0].eventName}
+									{otherEventsData[index].eventName}
 								</Heading>
 								<Heading tag="h6">
-									{new Date(data.events[0].startTime).toDateString()}
+									{new Date(otherEventsData[index].startTime).toDateString()}
 								</Heading>
 								<Heading tag="h6">
-									{new Date(data.events[0].startTime).toLocaleTimeString() +
+									{new Date(otherEventsData[index].startTime).toLocaleTimeString() +
 										' - ' +
-										new Date(data.events[0].endTime).toLocaleTimeString()}
+										new Date(otherEventsData[index].endTime).toLocaleTimeString()}
 								</Heading>
 							</div>
 							<p class="font-normal leading-tight text-gray-700 dark:text-gray-400">
-								{images[index].alt}
+								{otherEventsData[index].description}
 							</p>
 						</div>
 					</div>

@@ -1,0 +1,15 @@
+GET http://0.0.0.0:5173/api/users HTTP/1.1
+###
+POST http://0.0.0.0:5173/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "username": ""
+}
+###
+DELETE http://0.0.0.0:5173/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "username": "test"
+}

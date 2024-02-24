@@ -1,0 +1,15 @@
+GET http://0.0.0.0:5173/api/events HTTP/1.1
+###
+POST http://0.0.0.0:5173/api/events HTTP/1.1
+content-type: application/json
+
+{
+    "eventName": "tomato"
+}
+###
+DELETE http://0.0.0.0:5173/api/events HTTP/1.1
+content-type: application/json
+
+{
+    "eventName": "potato"
+}
