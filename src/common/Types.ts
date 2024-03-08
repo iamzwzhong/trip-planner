@@ -1,11 +1,6 @@
-export interface User {
-	id: string;
-	username: string;
-	avatar: string;
-}
-
 export interface Event {
 	id: string;
+	tripId: string;
 	eventName: string;
 	address: string;
 	description: string;

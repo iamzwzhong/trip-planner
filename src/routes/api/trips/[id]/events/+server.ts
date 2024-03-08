@@ -1,14 +1,16 @@
-import { faker } from '@faker-js/faker';
-import { json, type RequestEvent } from '@sveltejs/kit';
 import { db } from '@vercel/postgres';
-import { EventTag, type Event } from '../../../common/Types';
+import { EventTag, type Event } from '../../../../../common/Types';
+import { json } from '@sveltejs/kit';
+import { faker } from '@faker-js/faker';
 
-export async function GET() {
-	const rows = await db.sql`SELECT * FROM events`;
-	console.log(rows);
+// api/trips/[id]/events
+
+export async function GET({ params }) {
+	const rows = await db.sql`SELECT * FROM EVENTS WHERE trip_id = ${params.id}`;
 	const events: Event[] = rows.rows.map((row) => {
 		return {
 			id: row.id,
+			tripId: row.trip_id,
 			eventName: row.event_name,
 			address: row.address,
 			description: row.description,
@@ -21,8 +23,7 @@ export async function GET() {
 	return json(events, { status: 200 });
 }
 
-export async function POST(requestEvent: RequestEvent) {
-	const { request } = requestEvent;
+export async function POST({ params, request }) {
 	const { eventName } = await request.json();
 	const eventStartTime = faker.date.soon();
 	const eventEndTime = new Date(eventStartTime);
@@ -33,14 +34,14 @@ export async function POST(requestEvent: RequestEvent) {
 	const startTime = eventStartTime;
 	const endTime = eventEndTime;
 	const eventTag = faker.helpers.enumValue(EventTag);
-	await db.sql`INSERT INTO events (event_name, address, description, photo, start_time, end_time, event_tag) 
-		VALUES (${eventName}, ${address}, ${description}, ${photo}, ${startTime.toISOString()}, ${endTime.toISOString()}, ${eventTag});`;
+	await db.sql`INSERT INTO events (trip_id, event_name, address, description, photo, start_time, end_time, event_tag) 
+		VALUES (${
+			params.id
+		}, ${eventName}, ${address}, ${description}, ${photo}, ${startTime.toISOString()}, ${endTime.toISOString()}, ${eventTag});`;
 	return new Response(null, { status: 201 });
 }
 
-export async function DELETE(requestEvent: RequestEvent) {
-	const { request } = requestEvent;
-	const { eventName } = await request.json();
-	await db.sql`DELETE FROM events WHERE event_name = ${eventName}`;
+export async function DELETE({ params }) {
+	await db.sql`DELETE FROM EVENTS WHERE trip_id = ${params.id}`;
 	return new Response(null, { status: 200 });
 }

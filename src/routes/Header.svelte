@@ -26,7 +26,7 @@
 		</NavBrand>
 		<NavUl class="ml-3">
 			<NavLi href="/">Home</NavLi>
-			<NavLi href="/dashboard">Dashboard</NavLi>
+			<NavLi href="/events">Events</NavLi>
 		</NavUl>
 		<div class="ml-auto flex">
 			<div class="relative hidden md:block">
