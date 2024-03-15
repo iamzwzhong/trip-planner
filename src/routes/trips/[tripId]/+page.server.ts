@@ -53,7 +53,7 @@ export const actions = {
 	addEvent: async ({ request, fetch, params }) => {
 		const data = Object.fromEntries(await request.formData());
 
-		if (data.eventName.length < 1) {
+		if (data.eventName.toString().length < 1) {
 			return fail(400, {
 				data: data,
 				errorMsg: 'Event name cannot be empty.'
@@ -63,29 +63,40 @@ export const actions = {
 				data: data,
 				errorMsg: 'Event image is invalid.'
 			});
-		} else if (data.description.length < 1) {
+		} else if (data.description.toString().length < 1) {
 			return fail(400, {
 				data: data,
 				errorMsg: 'Event description cannot be empty.'
 			});
-		} else if (data.address.length < 1) {
+		} else if (data.description.toString().length > 500) {
+			return fail(400, {
+				data: data,
+				errorMsg: 'Event description cannot exceed 500 characters.'
+			});
+		} else if (data.address.toString().length < 1) {
 			return fail(400, {
 				data: data,
 				errorMsg: 'Event address cannot be empty.'
 			});
-		} else if (data.eventTag.length < 1) {
+		} else if (data.eventTag.toString().length < 1) {
 			return fail(400, {
 				data: data,
 				errorMsg: 'Event tag cannot be empty.'
 			});
+		} else if (data.dateRange.toString() == '') {
+			return fail(400, {
+				data: data,
+				errorMsg: 'Event date range is not selected.'
+			});
 		}
-
-		// TODO Add date validation
+		const dateRange = data.dateRange.toString().split(',');
+		const startDate = dateRange[0];
+		const endDate = dateRange[1];
 
 		const eventObject = {
 			name: data.eventName,
-			startTime: data.start,
-			endTime: data.end,
+			startTime: startDate,
+			endTime: endDate,
 			description: data.description,
 			address: data.address,
 			photo: data.photo,
