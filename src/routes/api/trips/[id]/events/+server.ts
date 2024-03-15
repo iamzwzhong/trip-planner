@@ -1,7 +1,6 @@
 import { db } from '@vercel/postgres';
-import { EventTag, type Event } from '../../../../../common/Types';
+import type { EventTag, Event } from '../../../../../common/Types';
 import { json } from '@sveltejs/kit';
-import { faker } from '@faker-js/faker';
 
 // api/trips/[id]/events
 
@@ -24,20 +23,11 @@ export async function GET({ params }) {
 }
 
 export async function POST({ params, request }) {
-	const { eventName } = await request.json();
-	const eventStartTime = faker.date.soon();
-	const eventEndTime = new Date(eventStartTime);
-	eventEndTime.setHours(eventStartTime.getHours() + 2);
-	const address = faker.location.streetAddress();
-	const description = faker.lorem.paragraph();
-	const photo = `https://api.dicebear.com/7.x/icons/svg?seed=${faker.number.int()}`;
-	const startTime = eventStartTime;
-	const endTime = eventEndTime;
-	const eventTag = faker.helpers.enumValue(EventTag);
+	const { name, startTime, endTime, description, address, photo, eventTag } = await request.json();
 	await db.sql`INSERT INTO events (trip_id, event_name, address, description, photo, start_time, end_time, event_tag) 
-		VALUES (${
-			params.id
-		}, ${eventName}, ${address}, ${description}, ${photo}, ${startTime.toISOString()}, ${endTime.toISOString()}, ${eventTag});`;
+		VALUES (${params.id}, ${name}, ${address}, ${description}, ${photo}, ${new Date(
+		startTime
+	).toISOString()}, ${new Date(endTime).toISOString()}, ${eventTag});`;
 	return new Response(null, { status: 201 });
 }
 

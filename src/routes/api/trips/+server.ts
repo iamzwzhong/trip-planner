@@ -1,7 +1,7 @@
-import { faker } from '@faker-js/faker';
 import { db } from '@vercel/postgres';
 import type { Trip } from '../../../common/Types';
 import { json } from '@sveltejs/kit';
+import { toResponse } from '$lib/utils/Utils';
 
 // api/trips
 
@@ -27,5 +27,5 @@ export async function POST({ request }) {
 		VALUES (${tripName}, ${new Date(startDate).toISOString()}, ${new Date(
 		endDate
 	).toISOString()}, ${photo});`;
-	return new Response(null, { status: 201 });
+	return toResponse('Inserted trip successfully.', 201);
 }
