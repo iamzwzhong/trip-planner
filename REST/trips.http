@@ -1,0 +1,56 @@
+# Get all trips
+GET http://0.0.0.0:5173/api/trips HTTP/1.1
+###
+
+# Get a trip with the ID
+GET http://0.0.0.0:5173/api/trips/4cf5bfd5-1fae-444c-a543-43e8cb5b2235 HTTP/1.1
+###
+
+# Get all events for a trip
+GET http://0.0.0.0:5173/api/trips/4cf5bfd5-1fae-444c-a543-43e8cb5b2235/events HTTP/1.1
+###
+
+# Get an event for a trip
+GET http://0.0.0.0:5173/api/trips/4cf5bfd5-1fae-444c-a543-43e8cb5b2235/events/678c1223-8f05-426c-b6fd-4be7e2235171 HTTP/1.1
+###
+
+# Delete an event for a trip
+DELETE http://0.0.0.0:5173/api/trips/4cf5bfd5-1fae-444c-a543-43e8cb5b2235/events/678c1223-8f05-426c-b6fd-4be7e2235171 HTTP/1.1
+###
+
+# Delete all events in a trip
+DELETE http://0.0.0.0:5173/api/trips/4cf5bfd5-1fae-444c-a543-43e8cb5b2235/events HTTP/1.1
+###
+
+# Create a trip
+POST http://0.0.0.0:5173/api/trips HTTP/1.1
+content-type: application/json
+
+{
+    "tripName": "Taiwan"
+}
+###
+
+# Update a trip
+PUT http://0.0.0.0:5173/api/trips/a66810ee-4b84-4217-8b44-a0d4b26ce782 HTTP/1.1
+content-type: application/json
+
+{
+    "tripName": "Taiwan",
+    "startDate": "2025-12-15",
+    "endDate": "2025-12-30",
+    "photo": "https://shorturl.at/lKNQ7"
+}
+###
+
+# Create an event for a trip
+POST http://0.0.0.0:5173/api/trips/4cf5bfd5-1fae-444c-a543-43e8cb5b2235/events HTTP/1.1
+content-type: application/json
+
+{
+    "eventName": "Kyoto"
+}
+###
+
+# Delete a trip
+DELETE http://0.0.0.0:5173/api/trips/5bcfdd67-b206-4a85-bbcb-13bc621425e5 HTTP/1.1
