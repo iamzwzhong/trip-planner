@@ -1,6 +1,7 @@
 import { error, fail, type Actions } from '@sveltejs/kit';
-import type { Event, EventTag, Trip } from '../../../common/Types.js';
 import { checkImageExists } from '$lib/utils/Utils.js';
+import type { Trip } from '$lib/types/Trip.js';
+import type { Event, EventTag } from '$lib/types/Event.js';
 
 export async function load({ fetch, params }) {
 	const fetchTrip = async () => {

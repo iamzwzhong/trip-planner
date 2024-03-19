@@ -18,11 +18,3 @@ export enum EventTag {
 	Food = 'Food',
 	Shopping = 'Shopping'
 }
-
-export interface Trip {
-	id: string;
-	tripName: string;
-	startDate: Date;
-	endDate: Date;
-	photo: string;
-}

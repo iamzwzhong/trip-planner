@@ -1,6 +1,6 @@
 import { error, type Actions, fail } from '@sveltejs/kit';
-import type { Trip } from '../../common/Types.js';
 import { checkImageExists } from '$lib/utils/Utils.js';
+import type { Trip } from '$lib/types/Trip.js';
 
 export async function load({ fetch }) {
 	const fetchTrips = async () => {
@@ -30,7 +30,7 @@ export const actions = {
 	addTrip: async ({ request, fetch }) => {
 		const data = Object.fromEntries(await request.formData());
 
-		if (data.tripName.length < 1) {
+		if (data.tripName.toString().length < 1) {
 			return fail(400, {
 				data: data,
 				errorMsg: 'Trip name cannot be empty.'

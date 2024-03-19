@@ -2,9 +2,9 @@
 	import { enhance } from '$app/forms';
 	import { Button, Input, Label, Textarea } from 'flowbite-svelte';
 	import Select from '$lib/components/Select.svelte';
-	import { EventTag } from '../../common/Types.js';
 	import SveltyPicker from 'svelty-picker';
 	import type { SubmitFunction } from '@sveltejs/kit';
+	import { EventTag } from '$lib/types/Event';
 
 	const eventTagOptions = (Object.keys(EventTag) as Array<keyof typeof EventTag>).map((key) => {
 		return { label: EventTag[key], value: EventTag[key] };
