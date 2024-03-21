@@ -1,7 +1,7 @@
 import { db } from '@vercel/postgres';
-import type { Trip } from '../../../common/Types';
 import { json } from '@sveltejs/kit';
 import { toResponse } from '$lib/utils/Utils';
+import type { Trip } from '$lib/types/Trip.js';
 
 // api/trips
 

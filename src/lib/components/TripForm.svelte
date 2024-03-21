@@ -1,19 +1,10 @@
 <script lang="ts">
+	import { Button, Input } from 'flowbite-svelte';
 	import { enhance } from '$app/forms';
-	import { Button, Helper, Input, Label, Textarea } from 'flowbite-svelte';
-	import Select from '$lib/components/Select.svelte';
 	import SveltyPicker from 'svelty-picker';
 	import type { SubmitFunction } from '@sveltejs/kit';
-	import { EventTag } from '$lib/types/Event';
 
-	export let formErrors;
-	const resetFormErrors = (error) => {
-		if (formErrors) formErrors[error] = null;
-	};
-
-	const eventTagOptions = (Object.keys(EventTag) as Array<keyof typeof EventTag>).map((key) => {
-		return { label: EventTag[key], value: EventTag[key] };
-	});
+	export let form;
 
 	export let submitFunction: SubmitFunction;
 	export let action: string;
@@ -21,46 +12,7 @@
 </script>
 
 <form method="POST" {action} use:enhance={submitFunction} autocomplete="off">
-	<Label for="event-name">Event</Label>
-	<Input
-		type="text"
-		name="eventName"
-		placeholder="Event Name"
-		id="event-name"
-		on:input={() => {
-			resetFormErrors('eventName');
-		}}
-	/>
-	{#if formErrors?.eventName}
-		<Helper color="red"><span class="font-medium">{formErrors?.eventName[0]}</span></Helper>
-	{/if}
-	<Label for="event-description">Description</Label>
-	<Textarea
-		id="event-description"
-		name="description"
-		rows="4"
-		placeholder="Enter a description..."
-		on:input={() => {
-			resetFormErrors('description');
-		}}
-	/>
-	{#if formErrors?.description}
-		<Helper color="red"><span class="font-medium">{formErrors?.description[0]}</span></Helper>
-	{/if}
-	<Label for="event-address">Address</Label>
-	<Input
-		type="text"
-		name="address"
-		id="event-address"
-		placeholder="Address"
-		on:input={() => {
-			resetFormErrors('address');
-		}}
-	/>
-	{#if formErrors?.address}
-		<Helper color="red"><span class="font-medium">{formErrors?.address[0]}</span></Helper>
-	{/if}
-	<Label for="event-time-range">Time Range</Label>
+	<Input type="text" name="tripName" placeholder="Name" />
 	<SveltyPicker
 		name="dateRange"
 		isRange
@@ -69,32 +21,12 @@
 		todayBtn={false}
 		clearBtn={false}
 		inputClasses="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-		on:input={() => {
-			resetFormErrors('dateRange');
-		}}
 	/>
-	{#if formErrors?.dateRange}
-		<Helper color="red"><span class="font-medium">{formErrors?.dateRange[0]}</span></Helper>
+	<Input type="url" name="photo" placeholder="Please enter a valid photo url" />
+	{#if form?.errors?.photo}
+		<span class="label-text-alt text-error">{form?.errors?.photo[0]}</span>
 	{/if}
-	<Label for="event-image">Event Image</Label>
-	<Input
-		type="url"
-		name="photo"
-		id="event-image"
-		placeholder="Image URL"
-		on:input={() => {
-			resetFormErrors('photo');
-		}}
-	/>
-	{#if formErrors?.photo}
-		<Helper color="red"><span class="font-medium">{formErrors?.photo[0]}</span></Helper>
-	{/if}
-	<Label for="event-tag">Event Tag</Label>
-	<Select options={eventTagOptions} name="eventTag" />
-	{#if formErrors?.eventTag}
-		<Helper color="red"><span class="font-medium">{formErrors?.eventTag[0]}</span></Helper>
-	{/if}
-	<Button type="submit" color="green" class="mt-2">{buttonLabel}</Button>
+	<Button color="green" type="submit">{buttonLabel}</Button>
 </form>
 
 <style>

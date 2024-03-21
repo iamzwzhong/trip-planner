@@ -13,9 +13,9 @@ CREATE TYPE EventTag AS ENUM('Anime', 'Nature', 'Attractions', 'Religious Archit
 CREATE TABLE TRIPS(
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     trip_name VARCHAR(50) NOT NULL,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
-    photo VARCHAR(100) NOT NULL
+    start_date DATE,
+    end_date DATE,
+    photo VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE EVENTS(
@@ -24,7 +24,7 @@ CREATE TABLE EVENTS(
     event_name VARCHAR(50) NOT NULL,
     address VARCHAR(255) NOT NULL,
     description VARCHAR(500) NOT NULL,
-    photo VARCHAR(100) NOT NULL,
+    photo VARCHAR(500) NOT NULL,
     start_time TIMESTAMP NOT NULL,
     end_time TIMESTAMP NOT NULL,
     event_tag EventTag NOT NULL

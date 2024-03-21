@@ -3,38 +3,14 @@
 	import EventCard from '$lib/components/EventCard.svelte';
 	import { Toaster } from 'svelte-french-toast';
 	import AddEventButton from '$lib/components/AddEventButton.svelte';
-	import type { SubmitFunction } from '@sveltejs/kit';
-	import { Button, Drawer } from 'flowbite-svelte';
-	import { sineIn } from 'svelte/easing';
-	import EventForm from '$lib/components/EventForm.svelte';
 
 	export let data;
 	$: events = data.events;
 	$: trip = data.trip;
 	$: labelMap = new Map([[trip.id, trip.tripName]]);
-
-	// let drawerHidden = true;
-	// const transitionParams = {
-	// 	x: -320,
-	// 	duration: 200,
-	// 	easing: sineIn
-	// };
-
-	// const t: SubmitFunction = () => {};
 </script>
 
 <Toaster />
-<!-- <div class="text-center">
-	<Button on:click={() => (drawerHidden = false)}>Show drawer form</Button>
-</div>
-<Drawer
-	transitionType="fly"
-	{transitionParams}
-	bind:hidden={drawerHidden}
-	divClass="overflow-y-visible z-50 p-4 bg-white dark:bg-gray-800"
->
-	<EventForm submitFunction={t} action="?/updateEvent" buttonLabel="Save" />
-</Drawer> -->
 <section>
 	<div class="max-w-8xl mx-auto px-4 pt-4 lg:px-40">
 		<Breadcrumb pathToLabel={labelMap} />

@@ -1,6 +1,6 @@
 import { db } from '@vercel/postgres';
-import type { EventTag, Event } from '../../../../../common/Types';
 import { json } from '@sveltejs/kit';
+import type { Event, EventTag } from '$lib/types/Event.js';
 
 // api/trips/[id]/events
 

@@ -4,6 +4,9 @@
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import toast from 'svelte-french-toast';
 	import EventForm from './EventForm.svelte';
+	import { page } from '$app/stores';
+
+	let formErrors;
 
 	const submitCreateEvent: SubmitFunction = () => {
 		return async ({ result, update }) => {
@@ -18,6 +21,7 @@
 					break;
 			}
 			await update({ reset: false });
+			formErrors = $page.form.errors;
 		};
 	};
 
@@ -29,6 +33,15 @@
 		><CirclePlusSolid class="h-10 w-10" /></Button
 	>
 </div>
-<Modal bind:open={addEventFormModal} bodyClass="overflow-y-visible">
-	<EventForm submitFunction={submitCreateEvent} action="?/addEvent" buttonLabel="Add" />
+<Modal
+	bind:open={addEventFormModal}
+	bodyClass="overflow-y-visible"
+	on:close={() => (formErrors = null)}
+>
+	<EventForm
+		submitFunction={submitCreateEvent}
+		action="?/addEvent"
+		buttonLabel="Add"
+		{formErrors}
+	/>
 </Modal>

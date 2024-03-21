@@ -1,6 +1,7 @@
 import { error, fail, type Actions } from '@sveltejs/kit';
-import type { Event, EventTag, Trip } from '../../../common/Types.js';
-import { checkImageExists } from '$lib/utils/Utils.js';
+import { validateData } from '$lib/utils/Utils.js';
+import type { Trip } from '$lib/types/Trip.js';
+import { EventFormSchema, type Event, type EventTag } from '$lib/types/Event.js';
 
 export async function load({ fetch, params }) {
 	const fetchTrip = async () => {
@@ -51,66 +52,29 @@ function createTrip(data): Trip {
 
 export const actions = {
 	addEvent: async ({ request, fetch, params }) => {
-		const data = Object.fromEntries(await request.formData());
+		const { formData, errors } = await validateData(await request.formData(), EventFormSchema);
 
-		if (data.eventName.toString().length < 1) {
-			return fail(400, {
-				data: data,
-				errorMsg: 'Event name cannot be empty.'
-			});
-		} else if ((await checkImageExists(data.photo.toString(), fetch)) == false) {
-			return fail(400, {
-				data: data,
-				errorMsg: 'Event image is invalid.'
-			});
-		} else if (data.description.toString().length < 1) {
-			return fail(400, {
-				data: data,
-				errorMsg: 'Event description cannot be empty.'
-			});
-		} else if (data.description.toString().length > 500) {
-			return fail(400, {
-				data: data,
-				errorMsg: 'Event description cannot exceed 500 characters.'
-			});
-		} else if (data.address.toString().length < 1) {
-			return fail(400, {
-				data: data,
-				errorMsg: 'Event address cannot be empty.'
-			});
-		} else if (data.eventTag.toString().length < 1) {
-			return fail(400, {
-				data: data,
-				errorMsg: 'Event tag cannot be empty.'
-			});
-		} else if (data.dateRange.toString() == '') {
-			return fail(400, {
-				data: data,
-				errorMsg: 'Event date range is not selected.'
-			});
+		if (errors) {
+			return fail(400, { data: formData, errors: errors.fieldErrors, errorMsg: 'Invalid Form' });
 		}
-		const dateRange = data.dateRange.toString().split(',');
-		const startDate = dateRange[0];
-		const endDate = dateRange[1];
 
 		const eventObject = {
-			name: data.eventName,
-			startTime: startDate,
-			endTime: endDate,
-			description: data.description,
-			address: data.address,
-			photo: data.photo,
-			eventTag: data.eventTag as EventTag
+			name: formData.eventName,
+			startTime: new Date(formData.dateRange.toString().split(',')[0]),
+			endTime: new Date(formData.dateRange.toString().split(',')[1]),
+			description: formData.description,
+			address: formData.address,
+			photo: formData.photo,
+			eventTag: formData.eventTag as EventTag
 		};
 
-		const options = {
+		return fetch(`/api/trips/${params.tripId}/events`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(eventObject)
-		};
-		return fetch(`/api/trips/${params.tripId}/events`, options).then((response) => {
+		}).then((response) => {
 			if (!response.ok) {
 				return fail(500, {
 					errorMsg: 'Internal Server Error'

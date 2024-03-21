@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Heading, Img, P } from 'flowbite-svelte';
-	import { EventTag } from '../../common/Types';
 	import { toDisplayDate } from '$lib/utils/Utils';
+	import { EventTag } from '$lib/types/Event';
 
 	export let eventName: string;
 	export let eventPhoto: string;
