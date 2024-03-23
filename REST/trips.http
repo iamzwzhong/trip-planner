@@ -1,3 +1,4 @@
+# These can be run using a VS Code extension: REST Client by Huachao Mao
 # Get all trips
 GET http://0.0.0.0:5173/api/trips HTTP/1.1
 ###
